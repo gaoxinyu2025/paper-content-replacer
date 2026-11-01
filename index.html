@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>纸张内容替换器</title>
+  <meta name="description" content="在固定照片中替换纸张内容" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <p class="kicker">PAPER CONTENT REPLACER</p>
+      <h1>只换纸张内容</h1>
+      <p class="lede">固定背景不变。上传新页面、调整裁切和纸张四角，再导出高清图片。</p>
+    </header>
+    <section class="app" aria-label="纸张内容替换工具">
+      <aside class="controls">
+        <div class="section-title"><span>01</span><div><h2>上传页面</h2><p>支持 JPG、PNG、WebP</p></div></div>
+        <label class="upload" for="pageInput">选择页面图片</label>
+        <input id="pageInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+        <p id="fileName" class="filename">尚未选择图片</p>
+        <hr />
+        <div class="section-title"><span>02</span><div><h2>裁切和对齐</h2><p>拖动画面上的四个圆点，贴合纸张边缘。</p></div></div>
+        <label>内容缩放 <output id="zoomValue">100%</output><input id="zoom" type="range" min="50" max="220" value="100" /></label>
+        <label>水平位置 <output id="panXValue">0</output><input id="panX" type="range" min="-50" max="50" value="0" /></label>
+        <label>垂直位置 <output id="panYValue">0</output><input id="panY" type="range" min="-50" max="50" value="0" /></label>
+        <div class="actions"><button id="resetCrop">重置裁切</button><button id="resetCorners">重置四角</button></div>
+        <hr />
+        <p class="hint">手指已作为透明前景层固定在最上方；上传内容只会替换纸张，不会盖住手指。</p>
+        <button id="export" class="export">导出合成图片 <small>PNG</small></button>
+      </aside>
+      <section class="stage">
+        <div class="bar"><span id="dot"></span><span id="status">等待上传页面</span></div>
+        <div class="canvas-wrap"><canvas id="canvas" width="1086" height="1448" aria-label="纸张替换预览"></canvas></div>
+        <p>提示：四个圆点决定纸张边缘；导出图片不会包含虚线和圆点。</p>
+      </section>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
