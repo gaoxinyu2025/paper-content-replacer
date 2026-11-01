@@ -1,7 +1,7 @@
 (() => {
   const W=1086,H=1448,canvas=document.querySelector('#canvas'),ctx=canvas.getContext('2d');
   const base=new Image(), page=new Image(), hand=new Image();
-  base.src='/base-photo-no-hand.png';
+  base.src='base-photo-no-hand.png';
   const initial=[{x:128,y:136},{x:972,y:136},{x:968,y:1308},{x:136,y:1308}];
   let corners=initial.map(p=>({...p})),ready=false,active=-1,zoom=1,panX=0,panY=0;
   const $=id=>document.getElementById(id);
@@ -13,5 +13,5 @@
   canvas.addEventListener('pointerdown',e=>{const p=point(e);canvas.setPointerCapture(e.pointerId);active=corners.findIndex(c=>Math.hypot(c.x-p.x,c.y-p.y)<38)});canvas.addEventListener('pointermove',e=>{if(active<0)return;const p=point(e);corners[active]={x:Math.max(0,Math.min(W,p.x)),y:Math.max(0,Math.min(H,p.y))};render()});canvas.addEventListener('pointerup',()=>active=-1);canvas.addEventListener('pointercancel',()=>active=-1);
   $('pageInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;page.onload=()=>{ready=true;$('fileName').textContent=f.name;$('status').textContent='页面已就绪 · 调整四角与裁切';$('dot').classList.add('ready');render()};page.src=URL.createObjectURL(f)});
   [['zoom',v=>{zoom=v/100;$('zoomValue').textContent=v+'%'}],['panX',v=>{panX=v;$('panXValue').textContent=v}],['panY',v=>{panY=v;$('panYValue').textContent=v}]].forEach(([id,fn])=>$(id).addEventListener('input',e=>{fn(+e.target.value);render()}));
-  $('resetCrop').onclick=()=>['zoom','panX','panY'].forEach(id=>{$(id).value=id==='zoom'?100:0;$(id).dispatchEvent(new Event('input'))});$('resetCorners').onclick=()=>{corners=initial.map(p=>({...p}));render()};$('export').onclick=()=>{ctx.save();ctx.clearRect(0,0,W,H);ctx.drawImage(base,0,0);if(ready)drawPage();drawHand();const a=document.createElement('a');a.download='纸张替换-手指前景版.png';a.href=canvas.toDataURL('image/png');a.click();ctx.restore();render();$('status').textContent='已生成 PNG，浏览器正在保存'};base.onload=render;hand.onload=render;hand.src='/hand-foreground.png';
+  $('resetCrop').onclick=()=>['zoom','panX','panY'].forEach(id=>{$(id).value=id==='zoom'?100:0;$(id).dispatchEvent(new Event('input'))});$('resetCorners').onclick=()=>{corners=initial.map(p=>({...p}));render()};$('export').onclick=()=>{ctx.save();ctx.clearRect(0,0,W,H);ctx.drawImage(base,0,0);if(ready)drawPage();drawHand();const a=document.createElement('a');a.download='纸张替换-手指前景版.png';a.href=canvas.toDataURL('image/png');a.click();ctx.restore();render();$('status').textContent='已生成 PNG，浏览器正在保存'};base.onload=render;hand.onload=render;hand.src='hand-foreground.png';
 })();
