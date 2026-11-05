@@ -6,6 +6,7 @@
   <title>纸张内容替换器</title>
   <meta name="description" content="在固定照片中替换纸张内容" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="controls.css" />
 </head>
 <body>
   <main>
@@ -22,10 +23,11 @@
         <p id="fileName" class="filename">尚未选择图片</p>
         <hr />
         <div class="section-title"><span>02</span><div><h2>裁切和对齐</h2><p>拖动画面上的四个圆点，贴合纸张边缘。</p></div></div>
-        <label>内容缩放 <output id="zoomValue">100%</output><input id="zoom" type="range" min="50" max="220" value="100" /></label>
-        <label>水平位置 <output id="panXValue">0</output><input id="panX" type="range" min="-50" max="50" value="0" /></label>
-        <label>垂直位置 <output id="panYValue">0</output><input id="panY" type="range" min="-50" max="50" value="0" /></label>
-        <div class="actions"><button id="resetCrop">重置裁切</button><button id="resetCorners">重置四角</button></div>
+        <div class="adjuster"><label for="zoom">内容缩放 <output id="zoomValue" for="zoom">100%</output></label><div class="adjuster-row"><button type="button" data-for="zoom" data-step="-1" aria-label="缩小内容">−</button><input id="zoom" type="range" min="50" max="220" value="100" /><button type="button" data-for="zoom" data-step="1" aria-label="放大内容">＋</button></div></div>
+        <div class="adjuster"><label for="panX">水平位置 <output id="panXValue" for="panX">0</output></label><div class="adjuster-row"><button type="button" data-for="panX" data-step="-1" aria-label="内容向左移动">←</button><input id="panX" type="range" min="-50" max="50" value="0" /><button type="button" data-for="panX" data-step="1" aria-label="内容向右移动">→</button></div></div>
+        <div class="adjuster"><label for="panY">垂直位置 <output id="panYValue" for="panY">0</output></label><div class="adjuster-row"><button type="button" data-for="panY" data-step="-1" aria-label="内容向上移动">↑</button><input id="panY" type="range" min="-50" max="50" value="0" /><button type="button" data-for="panY" data-step="1" aria-label="内容向下移动">↓</button></div></div>
+        <div class="adjuster"><label for="brightness">纸张内容亮度 <output id="brightnessValue" for="brightness">90%</output></label><div class="adjuster-row"><button type="button" data-for="brightness" data-step="-1" aria-label="降低纸张内容亮度">−</button><input id="brightness" type="range" min="50" max="120" value="90" /><button type="button" data-for="brightness" data-step="1" aria-label="提高纸张内容亮度">＋</button></div><p class="adjuster-hint">只调整替换区域，不改变背景和手指。</p></div>
+        <div class="actions"><button id="resetCrop" type="button">重置调整</button><button id="resetCorners" type="button">重置四角</button></div>
         <hr />
         <p class="hint">手指已作为透明前景层固定在最上方；上传内容只会替换纸张，不会盖住手指。</p>
         <button id="export" class="export">导出合成图片 <small>PNG</small></button>
