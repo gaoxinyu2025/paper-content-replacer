@@ -7,3 +7,14 @@
 .adjuster-row button:active{background:#dceee0}
 .adjuster-row button:focus-visible{outline:3px solid #87bfa1;outline-offset:2px}
 .adjuster-hint{font-size:11px;line-height:1.45;color:var(--muted);margin:5px 0 0}
+[hidden]{display:none!important}
+.batch-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+.batch-nav button{min-height:40px;padding:7px 9px;background:#f3f8f3;border:1px solid #cbd8ce;border-radius:9px;color:var(--green);font-size:12px;font-weight:700;cursor:pointer}
+.batch-nav button:disabled{opacity:.45;cursor:default}
+.batch-nav span{font-size:12px;color:var(--muted);white-space:nowrap}
+.export-all{background:var(--green);margin-top:8px}
+.export:disabled{opacity:.55;cursor:default}
+.batch-status{min-height:18px;margin:8px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.download-list{display:grid;gap:6px;margin-top:7px;max-height:210px;overflow:auto}
+.download-list a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:9px;border:1px solid #cbd8ce;border-radius:8px;background:#f3f8f3;color:var(--green);font-size:12px;text-decoration:none}
+.download-list a:active{background:#dceee0}
