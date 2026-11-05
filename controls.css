@@ -1,0 +1,9 @@
+.adjuster{margin-top:17px}
+.adjuster label{display:flex;justify-content:space-between;align-items:center;margin:0;font-size:12px;color:#47514e}
+.adjuster output{font-weight:700;color:var(--green)}
+.adjuster-row{display:flex;align-items:center;gap:8px;margin-top:7px}
+.adjuster-row input[type=range]{flex:1;min-width:0;width:auto;grid-column:auto;accent-color:var(--green)}
+.adjuster-row button{flex:none;width:44px;height:44px;border:1px solid #cbd8ce;border-radius:11px;background:#f3f8f3;color:var(--green);font-size:22px;line-height:1;font-weight:700;cursor:pointer;touch-action:manipulation}
+.adjuster-row button:active{background:#dceee0}
+.adjuster-row button:focus-visible{outline:3px solid #87bfa1;outline-offset:2px}
+.adjuster-hint{font-size:11px;line-height:1.45;color:var(--muted);margin:5px 0 0}
