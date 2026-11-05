@@ -17,10 +17,11 @@
     </header>
     <section class="app" aria-label="纸张内容替换工具">
       <aside class="controls">
-        <div class="section-title"><span>01</span><div><h2>上传页面</h2><p>支持 JPG、PNG、WebP</p></div></div>
-        <label class="upload" for="pageInput">选择页面图片</label>
-        <input id="pageInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+        <div class="section-title"><span>01</span><div><h2>上传页面</h2><p>支持 JPG、PNG、WebP，可一次选多张</p></div></div>
+        <label class="upload" for="pageInput">选择页面图片（可多选）</label>
+        <input id="pageInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
         <p id="fileName" class="filename">尚未选择图片</p>
+        <div id="batchNav" class="batch-nav" hidden><button id="previous" type="button" aria-label="上一张">← 上一张</button><span id="batchPosition">1 / 1</span><button id="next" type="button" aria-label="下一张">下一张 →</button></div>
         <hr />
         <div class="section-title"><span>02</span><div><h2>裁切和对齐</h2><p>拖动画面上的四个圆点，贴合纸张边缘。</p></div></div>
         <div class="adjuster"><label for="zoom">内容缩放 <output id="zoomValue" for="zoom">100%</output></label><div class="adjuster-row"><button type="button" data-for="zoom" data-step="-1" aria-label="缩小内容">−</button><input id="zoom" type="range" min="50" max="220" value="100" /><button type="button" data-for="zoom" data-step="1" aria-label="放大内容">＋</button></div></div>
@@ -30,7 +31,10 @@
         <div class="actions"><button id="resetCrop" type="button">重置调整</button><button id="resetCorners" type="button">重置四角</button></div>
         <hr />
         <p class="hint">手指已作为透明前景层固定在最上方；上传内容只会替换纸张，不会盖住手指。</p>
-        <button id="export" class="export">导出合成图片 <small>PNG</small></button>
+        <button id="export" class="export" type="button" disabled>导出当前图片 <small>PNG</small></button>
+        <button id="exportAll" class="export export-all" type="button" hidden>导出全部图片 <small>多张 PNG</small></button>
+        <p id="batchStatus" class="batch-status" role="status" aria-live="polite"></p>
+        <div id="downloadList" class="download-list" hidden></div>
       </aside>
       <section class="stage">
         <div class="bar"><span id="dot"></span><span id="status">等待上传页面</span></div>
